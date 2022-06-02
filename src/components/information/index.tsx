@@ -32,7 +32,7 @@ const TalkItem = (): React.ReactElement => (
 );
 
 const MemberItem = ({ name }: { name: string }) => (
-  <p className="flex items-center gap-4 px-8 py-6 text-2xl border-2 border-gray-300 border-dashed">{name}</p>
+  <p className="flex items-center gap-4 px-8 py-6 text-lg border-2 border-gray-300 border-dashed md:text-2xl">{name}</p>
 );
 
 export const Information = (): React.ReactElement => {
