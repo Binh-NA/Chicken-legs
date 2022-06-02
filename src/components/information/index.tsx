@@ -36,7 +36,6 @@ const MemberItem = ({ name }: { name: string }) => (
 );
 
 export const Information = (): React.ReactElement => {
-  const [indexScroll, setIndexScroll] = React.useState<number>(0);
   const dRef = React.useRef<HTMLDivElement>(null);
   const members = [
     'Liem Pham',
@@ -59,32 +58,9 @@ export const Information = (): React.ReactElement => {
     }
   };
 
-  const onTouchMove = (event: React.TouchEvent<HTMLDivElement>) => {
-    if (event.touches && event.touches.length > 0 && dRef && dRef.current) {
-      const top = event.touches[0].screenY;
-      if (top > indexScroll) {
-        // down
-        let left = dRef.current.scrollLeft;
-        left = left + 24;
-        if (left < 0) left = 0;
-        if (left > dRef.current.scrollWidth) left = dRef.current.scrollWidth;
-        dRef.current.scrollLeft = left;
-      } else {
-        // up
-        let left = dRef.current.scrollLeft;
-        left = left - 24;
-        if (left < 0) left = 0;
-        if (left > dRef.current.scrollWidth) left = dRef.current.scrollWidth;
-        dRef.current.scrollLeft = left;
-      }
-      setIndexScroll(top);
-    }
-  };
-
   return (
     <div
-      className="flex w-auto h-screen overflow-x-hidden font-permanent-marker"
-      onTouchMove={onTouchMove}
+      className="flex w-auto h-screen overflow-x-auto md:overflow-x-hidden font-permanent-marker"
       onWheel={onWheel}
       ref={dRef}
     >
