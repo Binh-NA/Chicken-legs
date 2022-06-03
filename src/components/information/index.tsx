@@ -1,4 +1,5 @@
 import React from 'react';
+import { ScrollBar } from './scroll-bar';
 
 const Container = ({ children }: { children: React.ReactNode }): React.ReactElement => (
   <div className="flex flex-col items-center justify-center w-screen min-w-full p-6 space-y-8">{children}</div>
@@ -36,6 +37,7 @@ const MemberItem = ({ name }: { name: string }) => (
 );
 
 export const Information = (): React.ReactElement => {
+  const [percent, setPercent] = React.useState<number>(0);
   const dRef = React.useRef<HTMLDivElement>(null);
   const members = [
     'Liem Pham',
@@ -58,12 +60,20 @@ export const Information = (): React.ReactElement => {
     }
   };
 
+  const onScroll = () => {
+    if (dRef && dRef.current) {
+      setPercent(Math.round((dRef.current.scrollLeft / (dRef.current.scrollWidth - dRef.current.offsetWidth)) * 100));
+    }
+  };
+
   return (
     <div
       className="flex w-auto h-screen overflow-x-auto md:overflow-x-hidden font-permanent-marker"
       onWheel={onWheel}
+      onScroll={onScroll}
       ref={dRef}
     >
+      <ScrollBar percent={percent} />
       <Container>
         <p className="text-6xl">Weekly</p>
         <div className="flex flex-wrap gap-6">

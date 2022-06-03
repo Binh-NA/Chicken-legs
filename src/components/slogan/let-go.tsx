@@ -1,9 +1,8 @@
-import Link from 'next/link';
-
-export const LetGo = (): React.ReactElement => (
-  <Link href="/information">
-    <a className="group block rounded-lg p-8 bg-white ring-1 ring-slate-900/5 shadow-md space-y-3 hover:bg-sky-500 hover:ring-sky-500 cursor-pointer border-0">
-      <p className="text-slate-900 group-hover:text-white text-8xl font-permanent-marker">Let Go!</p>
-    </a>
-  </Link>
+export const LetGo = (props: { onClick: () => void }): React.ReactElement => (
+  <button
+    className="block p-8 space-y-3 bg-white border-0 rounded-lg shadow-md cursor-pointer group ring-1 ring-slate-900/5 hover:bg-sky-500 hover:ring-sky-500"
+    onClick={props.onClick}
+  >
+    <p className="text-slate-900 group-hover:text-white text-8xl font-permanent-marker">Let Go!</p>
+  </button>
 );
