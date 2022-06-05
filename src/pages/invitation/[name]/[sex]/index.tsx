@@ -5,7 +5,7 @@ import { Invitation } from 'components/invitation';
 
 const InvitationPage: NextPage = () => {
   return (
-    <Layout title="Chicken leg | Invitation">
+    <Layout title="Chicken legs | Invitation">
       <Invitation />
     </Layout>
   );

@@ -5,7 +5,7 @@ import { Information } from 'components/information';
 
 const InformationPage: NextPage = () => {
   return (
-    <Layout title="Chicken leg | Information">
+    <Layout title="Chicken legs | Information">
       <Information />
     </Layout>
   );
